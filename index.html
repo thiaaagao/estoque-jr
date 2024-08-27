@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Thiago Rodrigues" content="Web App for Google Forms JR TELECOM">
+  <title>Solicitação de Materiais de Estoque</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,600;1,700&display=swap');
+
+    body {
+      font-family: 'Titillium Web', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      margin: 0;
+      box-sizing: border-box;
+      background-image: radial-gradient(circle at 74.2% 50.9%, rgb(14, 72, 222) 5.2%, rgb(3, 22, 65) 75.3%);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3d94f6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      background-color: #1e62d0;
+    }
+
+    #orientationMessage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 1000;
+      font-size: 7vh;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Solicitação de Materiais de Estoque</h1>
+    <form id="stockRequestForm">
+      <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" id="data" name="data" required>
+      </div>
+      <div class="form-group">
+        <label for="nomeTecnico">Nome do Técnico Instalador</label>
+        <input type="text" id="nomeTecnico" name="nomeTecnico" placeholder="Digite o nome do técnico" required>
+      </div>
+      <div class="form-group">
+        <label for="esticadores">Esticadores</label>
+        <input type="number" id="esticadores" name="esticadores" placeholder="Digite a quantidade em números" max="70" min="0">
+      </div>
+      <div class="form-group">
+        <label for="abracadeira">Abraçadeira</label>
+        <input type="number" id="abracadeira" name="abracadeira" placeholder="Digite a quantidade em números" max="100" min="0">
+      </div>
+      <div class="form-group">
+        <label for="conectores">Conectores APC</label>
+        <input type="number" id="conectores" name="conectores" placeholder="Digite a quantidade em números" max="20" min="0">
+      </div>
+      <div class="form-group">
+        <label for="fitaIsolante">Fita Isolante</label>
+        <input type="number" id="fitaIsolante" name="fitaIsolante" placeholder="Digite a quantidade em números" max="1" min="0">
+      </div>
+      <div class="form-group">
+        <label for="fitaCrepe">Fita Crepe</label>
+        <input type="number" id="fitaCrepe" name="fitaCrepe" placeholder="Digite a quantidade em números" max="1" min="0">
+      </div>
+      <div class="form-group">
+        <label for="dropFibra">Drop Fibra</label>
+        <input type="text" id="dropFibra" name="dropFibra" placeholder="Digite a quantidade em números" pattern="^\d+(\.\d{1,2})?$">
+      </div>
+      <div class="form-group">
+        <label for="fixaFio">Fixa Fio</label>
+        <input type="number" id="fixaFio" name="fixaFio" placeholder="Digite a quantidade em números" max="100" min="0">
+      </div>
+      <div class="form-group">
+        <label for="etiquetaLacre">Etiqueta Lacre</label>
+        <input type="number" id="etiquetaLacre" name="etiquetaLacre" placeholder="Digite a quantidade em números" max="135" min="0">
+      </div>
+      <div class="form-group">
+        <label for="bucha6mm">Bucha 6mm</label>
+        <input type="number" id="bucha6mm" name="bucha6mm" placeholder="Digite a quantidade em números" max="100" min="0">
+      </div>
+      <div class="form-group">
+        <label for="parafuso6mm">Parafuso 6mm</label>
+        <input type="number" id="parafuso6mm" name="parafuso6mm" placeholder="Digite a quantidade em números" max="100" min="0">
+      </div>
+      <div class="form-group">
+        <label for="buchaAcabamento">Bucha de Acabamento</label>
+        <input type="number" id="buchaAcabamento" name="buchaAcabamento" placeholder="Digite a quantidade em números" min="0" max="5">
+      </div>
+      <div class="form-group">
+        <label for="espiral">Espiral (Máximo 3 metros)</label>
+        <input type="number" id="espiral" name="espiral" placeholder="Digite a quantidade em números" max="3" min="0">
+      </div>
+      <button type="submit">Solicitar Material</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('stockRequestForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Validação de quantidades de buchas e parafusos
+      if (!validarBuchaParafuso()) {
+        showNotification('A quantidade de buchas e parafusos deve ser iguais.', false);
+        return;
+      }
+
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      enviarNotificacaoTelegram();
+      showNotification('Requisição enviada com sucesso!', true);
+      document.getElementById('stockRequestForm').reset();
+    });
+
+    function validarBuchaParafuso() {
+      const bucha6mm = parseInt(document.getElementById('bucha6mm').value, 10);
+      const parafuso6mm = parseInt(document.getElementById('parafuso6mm').value, 10);
+      return bucha6mm === parafuso6mm;
+    }
+
+    function enviarNotificacaoTelegram() {
+      const botToken = '6909031836:AAH3bi6HU89yXQM37djt5FWVF247SJKlPdg';
+      const chatId = '7015241103';
+      const nomeTecnico = document.getElementById('nomeTecnico').value;
+      const dataRequisicao = document.getElementById('data').value;
+      const message = `Nova solicitação de materiais de estoque foi enviada pelo técnico: ${nomeTecnico} - Data: ${dataRequisicao}`;
+
+      const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            console.log('Mensagem enviada com sucesso!');
+          } else {
+            console.error("Erro:", data);
+          }
+        })
+        .catch(error => console.error('Erro na requisição:', error));
+    }
+
+    function showNotification(message, isSuccess) {
+      var notificationElement = document.createElement('div');
+      notificationElement.textContent = message;
+      notificationElement.style.position = 'fixed';
+      notificationElement.style.bottom = '20px';
+      notificationElement.style.left = '50%';
+      notificationElement.style.transform = 'translateX(-50%)';
+      notificationElement.style.padding = '10px 20px';
+      notificationElement.style.backgroundColor = isSuccess ? '#4CAF50' : '#F44336';
+      notificationElement.style.color = '#fff';
+      notificationElement.style.borderRadius = '5px';
+      notificationElement.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+      document.body.appendChild(notificationElement);
+
+      setTimeout(() => {
+        notificationElement.remove();
+      }, 3000);
+    }
+
+    function checkOrientation() {
+      if (window.innerWidth < window.innerHeight) {
+        document.getElementById('orientationMessage').style.display = 'none';
+      } else {
+        document.getElementById('orientationMessage').style.display = 'block';
+      }
+    }
+
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('load', checkOrientation);
+  </script>
+
+  <div id="orientationMessage" style="display: none;">
+    Por favor, gire seu dispositivo para o modo retrato.
+  </div>
+</body>
+
+</html>
