@@ -210,22 +210,7 @@
         notificationElement.remove();
       }, 3000);
     }
-
-    function checkOrientation() {
-      if (window.innerWidth < window.innerHeight) {
-        document.getElementById('orientationMessage').style.display = 'none';
-      } else {
-        document.getElementById('orientationMessage').style.display = 'block';
-      }
-    }
-
-    window.addEventListener('resize', checkOrientation);
-    window.addEventListener('load', checkOrientation);
   </script>
-
-  <div id="orientationMessage" style="display: none;">
-    Por favor, gire seu dispositivo para o modo retrato.
-  </div>
 </body>
 
 </html>
