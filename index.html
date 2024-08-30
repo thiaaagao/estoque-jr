@@ -172,7 +172,7 @@
     }
 
     function enviarNotificacaoTelegram() {
-      const botToken = '6909031836:AAH3bi6HU89yXQM37djt5FWVF247SJKlPdg';
+      const botToken = '7529220942:AAEG7PNbdwqO5iOFfzLZmN1fG2k7QDHUj_E';
       const chatId = '7015241103';
       const nomeTecnico = document.getElementById('nomeTecnico').value;
       const dataRequisicao = document.getElementById('data').value;
@@ -193,6 +193,7 @@
         })
         .catch(error => console.error('Erro na requisição:', error));
     }
+
 
     function showNotification(message, isSuccess) {
       var notificationElement = document.createElement('div');
