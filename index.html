@@ -176,7 +176,9 @@
       const chatId = '7015241103';
       const nomeTecnico = document.getElementById('nomeTecnico').value;
       const dataRequisicao = document.getElementById('data').value;
-      const message = `Nova solicitação de materiais de estoque foi enviada pelo técnico: ${nomeTecnico} - Data: ${dataRequisicao}`;
+      const esticadores = document.getElementById('esticadores').value;
+      const message = `Nova solicitação de materiais de estoque foi enviada pelo técnico: ${nomeTecnico}\n - Data: ${dataRequisicao}\n Suprimentos:\n Esticador: ${esticadores}`;
+      console.log(nomeTecnico, dataRequisicao);
 
       const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
 
