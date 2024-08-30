@@ -177,11 +177,12 @@
       const nomeTecnico = document.getElementById('nomeTecnico').value;
       const dataRequisicao = document.getElementById('data').value;
       const esticadores = document.getElementById('esticadores').value;
-      const message = `Nova solicitação de materiais de estoque foi enviada pelo técnico: ${nomeTecnico}\n - Data: ${dataRequisicao}\n Suprimentos:\n Esticador: ${esticadores}`;
-      console.log(nomeTecnico, dataRequisicao);
+      const dropFibra = document.getElementById('dropFibra').value;
+      const message = `Nova solicitação de materiais de estoque foi enviada pelo técnico: ${nomeTecnico}\n - Data: ${dataRequisicao}\n Suprimentos:\n Esticador: ${esticadores}\n Drop Fibra: ${dropFibra}`;
+      console.log(nomeTecnico, dataRequisicao, dropFibra);
 
       const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-
+      console.log(message)
       fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -193,7 +194,6 @@
         })
         .catch(error => console.error('Erro na requisição:', error));
     }
-
 
     function showNotification(message, isSuccess) {
       var notificationElement = document.createElement('div');
