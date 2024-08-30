@@ -90,7 +90,7 @@
       </div>
       <div class="form-group">
         <label for="nomeTecnico">Nome do Técnico Instalador</label>
-        <input type="text" id="nomeTecnico" name="nomeTecnico" placeholder="Digite o nome do técnico" required>
+        <input type="text" id="nomeTecnico" name="nomeTecnico" placeholder="Digite o nome do técnico" pattern="^[a-zA-Z\s]{3,20}$" required>
       </div>
       <div class="form-group">
         <label for="esticadores">Esticadores</label>
@@ -178,11 +178,33 @@
       const dataRequisicao = document.getElementById('data').value;
       const esticadores = document.getElementById('esticadores').value;
       const dropFibra = document.getElementById('dropFibra').value;
-      const message = `Nova solicitação de materiais de estoque foi enviada pelo técnico: ${nomeTecnico}\n - Data: ${dataRequisicao}\n Suprimentos:\n Esticador: ${esticadores}\n Drop Fibra: ${dropFibra}`;
-      console.log(nomeTecnico, dataRequisicao, dropFibra);
+      const fixaFio = document.getElementById('fixaFio').value;
+      const fitaCrepe = document.getElementById('fitaCrepe').value;
+      const fitaIsolante = document.getElementById('fitaIsolante').value;
+      const conectores = document.getElementById('conectores').value;
+      const abracadeira = document.getElementById('abracadeira').value;
+      const espiral = document.getElementById('espiral').value;
+      const bucha6mm = document.getElementById('bucha6mm').value;
+      const parafuso6mm = document.getElementById('parafuso6mm').value;
+      const etiquetaLacre = document.getElementById('etiquetaLacre').value;
+      
+      
+      const message = `Nova solicitação de materiais de Estoque foi enviada pelo técnico: ${nomeTecnico}\nData: ${dataRequisicao}\n 
+      Suprimentos
+      \nEsticador: ${esticadores} UN
+      \nDrop Fibra: ${dropFibra}KM
+      \nFixa Fio: ${fixaFio} UN
+      \nFita Crepe: ${fitaCrepe} UN
+      \nFita Isolante: ${fitaIsolante} UN
+      \nConectores APC: ${conectores} UN
+      \nAbraçadeira: ${abracadeira} UN
+      \nEspiral: ${espiral} Metros
+      \nBucha x Parafuso: ${bucha6mm} UN x ${parafuso6mm} UN
+      \nEtiqueta Lacre: ${etiquetaLacre} UN\n
+      `;
 
       const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-      console.log(message)
+
       fetch(url)
         .then(response => response.json())
         .then(data => {
