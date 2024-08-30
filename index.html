@@ -187,20 +187,27 @@
       const bucha6mm = document.getElementById('bucha6mm').value;
       const parafuso6mm = document.getElementById('parafuso6mm').value;
       const etiquetaLacre = document.getElementById('etiquetaLacre').value;
-      
-      
-      const message = `Nova solicitação de materiais de Estoque foi enviada pelo técnico: ${nomeTecnico}\nData: ${dataRequisicao}\n 
-      Suprimentos
-      \nEsticador: ${esticadores} UN
-      \nDrop Fibra: ${dropFibra}KM
-      \nFixa Fio: ${fixaFio} UN
-      \nFita Crepe: ${fitaCrepe} UN
-      \nFita Isolante: ${fitaIsolante} UN
-      \nConectores APC: ${conectores} UN
-      \nAbraçadeira: ${abracadeira} UN
-      \nEspiral: ${espiral} Metros
-      \nBucha x Parafuso: ${bucha6mm} UN x ${parafuso6mm} UN
-      \nEtiqueta Lacre: ${etiquetaLacre} UN\n
+    
+      const message = `
+            🚨 *Nova Solicitação de Materiais de Estoque* 🚨
+
+            👷 *Técnico:* ${nomeTecnico}
+            📅 *Data da Solicitação:* ${dataRequisicao}
+
+            🧰 *Suprimentos Solicitados*:
+            --------------------------------------
+            🔹 *Esticadores:* ${esticadores} Unidades
+            🔹 *Drop Fibra:* ${dropFibra} KM
+            🔹 *Fixa Fio:* ${fixaFio} Unidades
+            🔹 *Fita Crepe:* ${fitaCrepe} Unidades
+            🔹 *Fita Isolante:* ${fitaIsolante} Unidades
+            🔹 *Conectores APC:* ${conectores} Unidades
+            🔹 *Abraçadeira:* ${abracadeira} Unidades
+            🔹 *Espiral:* ${espiral} Metros
+            🔹 *Bucha 6mm:* ${bucha6mm} Unidades
+            🔹 *Parafuso 6mm:* ${parafuso6mm} Unidades
+            🔹 *Etiqueta Lacre:* ${etiquetaLacre} Unidades
+            --------------------------------------
       `;
 
       const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
