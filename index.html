@@ -155,11 +155,19 @@
       }
 
       const formData = new FormData(this);
+      let dataHoraElement = document.getElementById('data');
+      let now = new Date();
+      let dataHora = now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR');
       const data = {};
       formData.forEach((value, key) => {
         data[key] = value;
       });
 
+      setInterval(function(){
+      let dataHoraElement = document.
+      
+      }
+      
       enviarNotificacaoTelegram();
       showNotification('Requisição enviada com sucesso!', true);
       document.getElementById('stockRequestForm').reset();
