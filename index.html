@@ -156,7 +156,6 @@
 
       const formData = new FormData(this);
       let dataHoraElement = document.getElementById('data');
-      const data = {};
       formData.forEach((value, key) => {
         data[key] = value;
       });
@@ -197,7 +196,7 @@
 
             🧰 Suprimentos Solicitados:
             --------------------------------------
-           `<strong>`🔹 Esticadores: `<strong>`${esticadores} Unidades
+            🔹 Esticadores: ${esticadores} Unidades
             🔹 Drop Fibra: ${dropFibra} Metros
             🔹 Fixa Fio: ${fixaFio} Unidades
             🔹 Fita Crepe: ${fitaCrepe} Unidades
