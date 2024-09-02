@@ -13,3 +13,7 @@ Requisição de estoque via Web com notificação no Telegram via Botfather
 ## Stack utilizada
 
 **Front-end:** HTML, JS, CSS3
+
+## Deploy
+
+https://thiaaagao.github.io/estoque-jr/
