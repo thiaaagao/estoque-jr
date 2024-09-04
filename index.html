@@ -185,7 +185,7 @@
       const botToken = '7529220942:AAEG7PNbdwqO5iOFfzLZmN1fG2k7QDHUj_E';
       const chatId = '7015241103';
       const nomeTecnico = document.getElementById('nomeTecnico').value.toUpperCase();
-      const dataRequisicao = document.getElementById('data').value;
+      const dataRequisicao = document.getElementById('data').value.split("-").reverse().join("/");
       const esticadores = document.getElementById('esticadores').value;
       const dropFibra = document.getElementById('dropFibra').value;
       const fixaFio = document.getElementById('fixaFio').value;
