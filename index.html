@@ -162,18 +162,18 @@
       formData.forEach((value, key) => {
         data[key] = value;
       });
-    let dataValue = data['data'];
-    let dataObj = new Date(dataValue);
-
-      if (dataOjb.getFullYear() !== 2024){
-        showNotification('O ano deve ser 2024!');
-        return;
+      let dataValue = data['data'];
+      let dataObj = new Date(dataValue);
+  
+      if (dataObj.getFullYear() !== 2024){
+          showNotification('O ano deve ser 2024!');
+          return;
       }
       
       enviarNotificacaoTelegram();
       showNotification('Requisição enviada com sucesso!', true);
       document.getElementById('stockRequestForm').reset();
-    });
+      });
 
     function validarBuchaParafuso() {
       const bucha6mm = parseInt(document.getElementById('bucha6mm').value, 10);
