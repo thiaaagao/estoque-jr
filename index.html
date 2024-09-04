@@ -157,10 +157,19 @@
 
       const formData = new FormData(this);
       let dataHoraElement = document.getElementById('data');
+      let data = {};
+      
       formData.forEach((value, key) => {
         data[key] = value;
       });
+    let dataValue = data['data'];
+    let dataObj = new Date(dataValue);
 
+      if (dataOjb.getFullYear() !== 2024){
+        showNotification('O ano deve ser 2024!');
+        return;
+      }
+      
       enviarNotificacaoTelegram();
       showNotification('Requisição enviada com sucesso!', true);
       document.getElementById('stockRequestForm').reset();
