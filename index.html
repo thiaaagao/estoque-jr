@@ -182,10 +182,10 @@
     }
 
     function enviarNotificacaoTelegram() {
-      const botTokenEncrypted = 'NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ';
-      const chatIdEncrypted = 'NzAxNTI0MTEwMw';
-      const botToken = atob(botTokenEncrypted);
-      const chatId = atob(chatIdEncrypted);
+      const b = 'NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ';
+      const c = 'NzAxNTI0MTEwMw';
+      const botToken = atob(b);
+      const chatId = atob(c);
       const nomeTecnico = document.getElementById('nomeTecnico').value.toUpperCase();
       const dataRequisicao = document.getElementById('data').value.split("-").reverse().join("/");
       const esticadores = document.getElementById('esticadores').value;
@@ -199,7 +199,7 @@
       const bucha6mm = document.getElementById('bucha6mm').value;
       const parafuso6mm = document.getElementById('parafuso6mm').value;
       const etiquetaLacre = document.getElementById('etiquetaLacre').value;
-
+      
       const message = `
             🚨 Nova Solicitação de Materiais de Estoque 🚨
 
@@ -231,6 +231,7 @@
             console.log('Mensagem enviada com sucesso!');
           } else {
             console.error("Erro:", data);
+            showNotification("Erro no envio, consulte o administrador do sistema!")
           }
         })
         .catch(error => console.error('Erro na requisição:', error));
