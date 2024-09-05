@@ -182,8 +182,10 @@
     }
 
     function enviarNotificacaoTelegram() {
-      const botToken = '7529220942:AAEG7PNbdwqO5iOFfzLZmN1fG2k7QDHUj_E';
-      const chatId = '7015241103';
+      const botTokenEncrypted = 'NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ';
+      const chatIdEncrypted = 'NzAxNTI0MTEwMw';
+      const botToken = atob(botTokenEncrypted);
+      const chatId = atob(chatIdEncrypted);
       const nomeTecnico = document.getElementById('nomeTecnico').value.toUpperCase();
       const dataRequisicao = document.getElementById('data').value.split("-").reverse().join("/");
       const esticadores = document.getElementById('esticadores').value;
