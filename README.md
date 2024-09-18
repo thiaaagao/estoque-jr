@@ -10,7 +10,7 @@ Requisição de estoque via Web com notificação no Telegram via Botfather
 - [@thiaaagao](https://www.github.com/thiaaagao)
 
 ## Versão 
-- V.1
+- V.1.2
 
 ## Stack utilizada
 
