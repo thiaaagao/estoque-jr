@@ -298,6 +298,12 @@
       }
 
       function enviarNotificacaoTelegram() {
+        //Hora requisição
+        const horaAtual = new Date();
+        const horaReq = horaAtual.getHours();
+        const minutosReq = horaAtual.getMinutes();
+        const segundosReq = horaAtual.getSeconds();
+
         const b =
           "NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ";
         const c = "NzAxNTI0MTEwMw";
@@ -324,12 +330,13 @@
         const bucha6mm = document.getElementById("bucha6mm").value;
         const parafuso6mm = document.getElementById("parafuso6mm").value;
         const etiquetaLacre = document.getElementById("etiquetaLacre").value;
-
+        const horasRequisicao = `${horaReq}:${minutosReq}:${segundosReq}`;
         const message = `
             🚨 Nova Solicitação de Materiais de Estoque 🚨
 
             👷 Técnico: ${nomeTecnico}
             📅 Data da Solicitação: ${dataRequisicao}
+            ⏰ Horário da Solicitação: ${horasRequisicao}
 
             🧰 Suprimentos Solicitados:
             --------------------------------------
