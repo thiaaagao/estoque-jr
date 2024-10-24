@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,600;1,700&display=swap");
+body {
+  font-family: "Titillium Web", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 auto;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-image: radial-gradient(
+    circle at 74.2% 50.9%,
+    rgb(14, 72, 222) 5.2%,
+    rgb(3, 22, 65) 75.3%
+  );
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+button {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3d94f6;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  display: table-column;
+  margin: 10vh 15vw;
+  padding: 10vh 15vw;
+  gap: 5px;
+  border: 2px red solid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.requisicaoGasolina {
+  border: 2px red solid;
+  margin: 10px 20px;
+}
+
+.requisicaoEstoque {
+  border: 2px red solid;
+  margin: 10px 20px;
+}
+a {
+  color: #fff;
+  text-decoration:  none;
+}

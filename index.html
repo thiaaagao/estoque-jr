@@ -2,7 +2,10 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <meta
       name="Thiago Rodrigues"
       content="Web App for Google Forms JR TELECOM"
@@ -93,6 +96,32 @@
         font-size: 7vh;
         padding: 10px;
       }
+      a {
+        text-decoration: none;
+        color: #fff;
+        background: none;
+        border: none;
+        outline: none;
+      }
+
+      a:visited {
+        text-decoration: none;
+        color: inherit;
+      }
+      .comebackTotheFuture {
+        padding: 10px 20px;
+        margin-left: 27vw;
+        border: none;
+        border-radius: 5px;
+        background-color: #f03232;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .comebackTotheFuture:hover {
+        background-color: #9c1919;
+      }
     </style>
   </head>
 
@@ -102,10 +131,17 @@
       <form id="stockRequestForm">
         <div class="form-group">
           <label for="data">Data</label>
-          <input type="date" id="data" name="data" required />
+          <input
+            type="date"
+            id="data"
+            name="data"
+            required
+          />
         </div>
         <div class="form-group">
-          <label for="nomeTecnico">Nome do Técnico Instalador</label>
+          <label for="nomeTecnico"
+            >Nome do Técnico Instalador</label
+          >
           <input
             type="text"
             id="nomeTecnico"
@@ -231,7 +267,9 @@
           />
         </div>
         <div class="form-group">
-          <label for="buchaAcabamento">Bucha de Acabamento</label>
+          <label for="buchaAcabamento"
+            >Bucha de Acabamento</label
+          >
           <input
             type="number"
             id="buchaAcabamento"
@@ -242,7 +280,9 @@
           />
         </div>
         <div class="form-group">
-          <label for="espiral">Espiral (Máximo 3 metros)</label>
+          <label for="espiral"
+            >Espiral (Máximo 3 metros)</label
+          >
           <input
             type="number"
             id="espiral"
@@ -253,6 +293,9 @@
           />
         </div>
         <button type="submit">Solicitar Material</button>
+        <button class="comebackTotheFuture" type="button" disabled>Voltar
+          <!-- <a href="./index.html">Voltar</a> -->
+        </button>
       </form>
     </div>
 
@@ -272,7 +315,8 @@
           }
 
           const formData = new FormData(this);
-          let dataHoraElement = document.getElementById("data");
+          let dataHoraElement =
+            document.getElementById("data");
           let data = {};
 
           formData.forEach((value, key) => {
@@ -287,8 +331,13 @@
           }
 
           enviarNotificacaoTelegram();
-          showNotification("Requisição enviada com sucesso!", true);
-          document.getElementById("stockRequestForm").reset();
+          showNotification(
+            "Requisição enviada com sucesso!",
+            true
+          );
+          document
+            .getElementById("stockRequestForm")
+            .reset();
         });
 
       function validarBuchaParafuso() {
@@ -304,6 +353,12 @@
       }
 
       function enviarNotificacaoTelegram() {
+        //Hora requisição
+        const horaAtual = new Date();
+        const horaReq = horaAtual.getHours();
+        const minutosReq = horaAtual.getMinutes();
+        const segundosReq = horaAtual.getSeconds();
+
         const b =
           "NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ";
         const c = "NzAxNTI0MTEwMw";
@@ -319,6 +374,7 @@
           .value.split("-")
           .reverse()
           .join("/");
+<<<<<<< HEAD
         const esticadores = document.getElementById("esticadores").value;
         const dropFibra = document.getElementById("dropFibra").value;
         const fixaFio = document.getElementById("fixaFio").value;
@@ -333,11 +389,41 @@
       /*   const hour = new Date();
         hour.toLocaleTimeString('pt-BR');
  */
+=======
+        const esticadores =
+          document.getElementById("esticadores").value;
+        const dropFibra =
+          document.getElementById("dropFibra").value;
+        const fixaFio =
+          document.getElementById("fixaFio").value;
+        const fitaCrepe =
+          document.getElementById("fitaCrepe").value;
+        const fitaIsolante =
+          document.getElementById("fitaIsolante").value;
+        const conectores =
+          document.getElementById("conectores").value;
+        const abracadeira =
+          document.getElementById("abracadeira").value;
+        const espiral =
+          document.getElementById("espiral").value;
+        const bucha6mm =
+          document.getElementById("bucha6mm").value;
+        const parafuso6mm =
+          document.getElementById("parafuso6mm").value;
+        const etiquetaLacre =
+          document.getElementById("etiquetaLacre").value;
+        const horasRequisicao = `${horaReq}:${minutosReq}:${segundosReq}`;
+>>>>>>> ced93a6556442f3f34af147df437782941fc6660
         const message = `
             🚨 Nova Solicitação de Materiais de Estoque 🚨
 
             👷 Técnico: ${nomeTecnico}
+<<<<<<< HEAD
             📅 Data da Solicitação: ${dataRequisicao} - Hora: ${hour}
+=======
+            📅 Data da Solicitação: ${dataRequisicao}
+            ⏰ Horário da Solicitação: ${horasRequisicao}
+>>>>>>> ced93a6556442f3f34af147df437782941fc6660
 
             🧰 Suprimentos Solicitados:
             --------------------------------------
@@ -385,23 +471,27 @@
               );
             }
           })
-          .catch((error) => console.error("Erro na requisição:", error));
+          .catch((error) =>
+            console.error("Erro na requisição:", error)
+          );
       }
 
       function showNotification(message, isSuccess) {
-        var notificationElement = document.createElement("div");
+        var notificationElement =
+          document.createElement("div");
         notificationElement.textContent = message;
         notificationElement.style.position = "fixed";
         notificationElement.style.bottom = "20px";
         notificationElement.style.left = "50%";
-        notificationElement.style.transform = "translateX(-50%)";
+        notificationElement.style.transform =
+          "translateX(-50%)";
         notificationElement.style.padding = "10px 20px";
-        notificationElement.style.backgroundColor = isSuccess
-          ? "#4CAF50"
-          : "#F44336";
+        notificationElement.style.backgroundColor =
+          isSuccess ? "#4CAF50" : "#F44336";
         notificationElement.style.color = "#fff";
         notificationElement.style.borderRadius = "5px";
-        notificationElement.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.2)";
+        notificationElement.style.boxShadow =
+          "0 2px 5px rgba(0, 0, 0, 0.2)";
         document.body.appendChild(notificationElement);
 
         setTimeout(() => {
