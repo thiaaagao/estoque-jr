@@ -45,15 +45,30 @@ button {
 }
 
 .requisicaoGasolina {
-  border: 2px red solid;
   margin: 10px 20px;
 }
 
 .requisicaoEstoque {
-  border: 2px red solid;
+
   margin: 10px 20px;
 }
 a {
   color: #fff;
-  text-decoration:  none;
+  text-decoration: none;
+}
+.imgContainer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 2em;
+  gap: 1.5vh;
+  
+}
+.imgContainer img {
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+
 }
