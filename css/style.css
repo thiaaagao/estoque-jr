@@ -15,7 +15,7 @@ body {
     rgb(14, 72, 222) 5.2%,
     rgb(3, 22, 65) 75.3%
   );
-  border: 2px solid red;
+  
 }
 
 h1 {
@@ -25,11 +25,11 @@ h1 {
   color: #fff;
 }
 
-.button {
+.buttonMenu {
   font-family: 'Poppins', sans-serif;
   text-align: center;
   letter-spacing: 0.0em;
-  width: 380px;
+  width: 55vh;
   height: auto;
   padding: 8px 16px 8px 16px;
   border: none;
@@ -44,7 +44,7 @@ h1 {
   text-transform: uppercase;
 }
 
-.button:hover {
+.buttonMenu:hover {
   background-color: rgb(0, 140, 255);
   box-shadow: 0px 4px 24px rgb(0, 140, 255);
 }
@@ -57,7 +57,7 @@ h1 {
   justify-content: center;
   align-items: center;
   justify-items: center;
-  border: 2px solid yellow
+  
 
 }
 
