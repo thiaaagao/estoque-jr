@@ -126,8 +126,8 @@
 
   <body>
     <div class="container">
-      <h1>Solicitação de Materiais de Estoque</h1>
-      <form id="stockRequestForm">
+      <h1>Solicitação de Requisição de Gasolina</h1>
+      <form id="stockGasolinaForm">
         <div class="form-group">
           <label for="data">Data</label>
           <input
@@ -173,6 +173,7 @@
             id="numeroCars"
             class="numeroVeiculo"
           >
+            <option>   </option>
             <option>150</option>
             <option>151</option>
             <option>152</option>
@@ -198,32 +199,7 @@
       </form>
     </div>
 
-    <script>
-        
-
-
-      function showNotification(message, isSuccess) {
-        var notificationElement =
-          document.createElement("div");
-        notificationElement.textContent = message;
-        notificationElement.style.position = "fixed";
-        notificationElement.style.bottom = "20px";
-        notificationElement.style.left = "50%";
-        notificationElement.style.transform =
-          "translateX(-50%)";
-        notificationElement.style.padding = "10px 20px";
-        notificationElement.style.backgroundColor =
-          isSuccess ? "#4CAF50" : "#F44336";
-        notificationElement.style.color = "#fff";
-        notificationElement.style.borderRadius = "5px";
-        notificationElement.style.boxShadow =
-          "0 2px 5px rgba(0, 0, 0, 0.2)";
-        document.body.appendChild(notificationElement);
-
-        setTimeout(() => {
-          notificationElement.remove();
-        }, 4500);
-      }
-    </script>
+    <script src="../js/scriptGasolina.js"> </script>
+         <!-- adicionar km alerta quando km bater 9500 e enviar alerta para o telegram. -->
   </body>
 </html>
