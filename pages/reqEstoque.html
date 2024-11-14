@@ -274,6 +274,19 @@
           />
         </div>
         <div class="form-group">
+          <label for="placasJR"
+            >Placas JR</label
+          >
+          <input
+            type="number"
+            id="placasJR"
+            name="placasJR"
+            placeholder="Digite a quantidade em números"
+            min="0"
+            max="20"
+          />
+        </div>
+        <div class="form-group">
           <label for="espiral"
             >Espiral (Máximo 3 metros)</label
           >
@@ -390,6 +403,7 @@
           document.getElementById("parafuso6mm").value;
         const etiquetaLacre =
           document.getElementById("etiquetaLacre").value;
+        const placaJR = document.getElementById("placasJR").value;
         const horasRequisicao = `${horaReq}:${minutosReq}:${segundosReq}`;
         const message = `
             🚨 Nova Solicitação de Materiais de Estoque 🚨
@@ -401,6 +415,7 @@
             🧰 Suprimentos Solicitados:
             --------------------------------------
             🔹 Esticadores: ${esticadores} Unidades
+            🔹 Placas JR: ${placaJR} Unidades
             🔹 Drop Fibra: ${dropFibra} Metros
             🔹 Fixa Fio: ${fixaFio} Unidades
             🔹 Fita Crepe: ${fitaCrepe} Unidades
