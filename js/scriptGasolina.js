@@ -1,24 +1,57 @@
 document.getElementById("stockGasolinaForms").addEventListener("submit", function (e) {
     e.preventDefault();
+    const formData = new FormData(this);
+    let dataHora = document.getElementsById("data");
+    let data = {};
 
+    formData.forEach((value, key) => {
+        let dataValue = data["data"];
+        let dataObj = new Date(dataValue);
+
+        if (dataObj.getFullYear() !== 2024) {
+            showNotification("Ano inválido!");
+            return;
+
+        }
+
+
+    })
 
 })
 
-const formData = new FormData(this);
-let dataHora = document.getElementsById("data");
-let data = {};
+function enviarNotificacaoTelegramGasolina() {
+    const horaAtual = new Date();
+    const horaReq = horaAtual.getHours();
+    const minutosReq = horaAtual.getMinutes();
+    const segundosReq = horaAtual.getSeconds();
 
-formData.forEach((value, key) => {
-    let dataValue = data["data"];
-    let dataObj = new Date(dataValue);
+    // token bot
+    // id_bot
+    // id_chat_group
 
-    if (dataObj.getFullYear() !== 2024 ){
-        showNotification("Ano inválido!");
-        return;
+    const nomeSolicitante = document.getElementById("nomeSolicitante").value;
+    const kmVeiculo = document.getElementById("kmVeiculo").value;
+    const numeroVeiculo = document.getElementById("numeroVeiculo").value;
+    const dataRequisicao = document.getElementById("data").value.split("-").reverse().join("/");
+    const horasRequisicao = `${horaReq}:${minutosReq}:${segundosReq}`;
 
+    if (kmVeiculo >= 9500 || kmVeiculo <= 10000) {
+        // enviar notificação para o telegram informando da revisão
     }
 
-})
+    const message =
+        `🚨 Nova Solicitação de Materiais de Combustível 🚨
+
+        📅 Data da Solicitação: ${dataRequisicao}
+        ⏰ Horário da Solicitação: ${horasRequisicao}
+
+        👷 Nome do Solicitante: ${nomeSolicitante}
+        🚗 Veiculo: ${numeroVeiculo}
+        🚗 KM do Veiculo: ${kmVeiculo}
+    `
+}
+
+
 
 function showNotification(message, isSucess) {
     const notificationElement = document.createElement("div");
