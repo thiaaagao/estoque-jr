@@ -1,6 +1,4 @@
-document
-    .getElementById("stockRequestForm")
-    .addEventListener("submit", function (e) {
+document.getElementById("stockRequestForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
         // Validação de quantidades de buchas e parafusos
