@@ -47,7 +47,7 @@ function enviarNotificacaoTelegramGasolina() {
     const horasRequisicao = `${horaReq}:${minutosReq}:${segundosReq}`;
 
     if (kmVeiculo >= 9500 && kmVeiculo <= 10000) {
-        showNotification("Atenção! O veiculo esta no limite de kilometragem.");
+        alert("Atenção! O veiculo esta no limite de kilometragem.");
         const messageRevisao = `
 
         🚨 ATENÇÃO! VEÍCULO NECESSITA DE REVISÃO! 🚨
