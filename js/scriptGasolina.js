@@ -32,13 +32,13 @@ function enviarNotificacaoTelegramGasolina() {
     const minutosReq = horaAtual.getMinutes();
     const segundosReq = horaAtual.getSeconds();
 
-    const b =
+    /* const b =
         "NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ";
     const c = "NzAxNTI0MTEwMw";
-    const f = "LTEwMDIzNzUzMjY2MzE=";
-    const a = atob(b);
-    const ac = atob(c);
-    const abc = atob(f);
+    const f = "LTEwMDIzNzUzMjY2MzE="; */
+    const botToken = atob("NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ");
+    const chatId = atob("NzAxNTI0MTEwMw");
+    const chatIdGroup = atob("LTEwMDIzNzUzMjY2MzE=");
 
     const nomeSolicitante = document.getElementById("nomeSolicitante").value;
     const kmVeiculo = document.getElementById("kmVeiculo").value;
@@ -58,7 +58,7 @@ function enviarNotificacaoTelegramGasolina() {
         🚗 Veiculo: ${numeroVeiculo}
         🚗 KM do Veiculo: ${kmVeiculo}
         --------------------------------------`;
-        const urlRevisao = `https://api.telegram.org/bot${a}/sendMessage?chat_id=${abc}&text=${encodeURIComponent(messageRevisao)}`;
+        const urlRevisao = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatIdGroup}&text=${encodeURIComponent(messageRevisao)}`;
 
         fetch(urlRevisao)
             .then((response) => response.json())
@@ -87,10 +87,10 @@ function enviarNotificacaoTelegramGasolina() {
         --------------------------------------
     `;
 
-    const urlGasolina = `https://api.telegram.org/bot${ac}/sendMessage?chat_id=${a}&chat_id=${abc}&text=${encodeURIComponent(
+    const urlGasolina = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&chat_id=${chatIdGroup}&text=${encodeURIComponent(
         messageGasolina
     )}`;
-    const urlGasolinaGroup = `https://api.telegram.org/bot${a}/sendMessage?chat_id=${abc}&text=${encodeURIComponent(
+    const urlGasolinaGroup = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatIdGroup}&text=${encodeURIComponent(
         messageGasolina
     )}`;
 
