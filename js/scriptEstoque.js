@@ -21,8 +21,8 @@ document.getElementById("stockRequestForm").addEventListener("submit", function 
         let dataValue = data["data"];
         let dataObj = new Date(dataValue);
 
-        if (dataObj.getFullYear() !== 2024) {
-            showNotification("O ano deve ser 2024!");
+        if (dataObj.getFullYear() !== 2025) {
+            showNotification("O ano deve ser 2025!");
             return;
         }
 
