@@ -14,7 +14,7 @@ document.getElementById("stockGasolinaForms").addEventListener("submit", functio
     const numeroVeiculo = document.getElementById("numeroCars").value;
     data["numeroCars"] = numeroVeiculo;
 
-    if (dataObj.getFullYear() !== 2025) {
+    if (dataObj.getFullYear() !== 2026) {
         showNotification("O ano deve ser 2025!");
         return;
     }
