@@ -21,8 +21,10 @@ document.getElementById("stockRequestForm").addEventListener("submit", function 
         let dataValue = data["data"];
         let dataObj = new Date(dataValue);
 
-        if (dataObj.getFullYear() !== 2025) {
-            showNotification("O ano deve ser 2025!");
+        const isYearValidate = dataObj.getFullYear() === 2025
+
+        if(!isYearValidate){
+            showNotification("Ano inválido!")
             return;
         }
 
