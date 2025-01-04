@@ -14,10 +14,12 @@ document.getElementById("stockGasolinaForms").addEventListener("submit", functio
     const numeroVeiculo = document.getElementById("numeroCars").value;
     data["numeroCars"] = numeroVeiculo;
 
-    if (dataObj.getFullYear() !== 2026) {
-        showNotification("O ano deve ser 2025!");
-        return;
-    }
+    const isYearValidate = dataObj.getFullYear() === 2025
+
+        if(!isYearValidate){
+            showNotification("Ano inválido!")
+            return;
+        }
 
     enviarNotificacaoTelegramGasolina();
     showNotification("Solicitação enviada com sucesso!", true);
