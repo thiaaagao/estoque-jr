@@ -56,7 +56,7 @@ function enviarNotificacaoTelegram() {
     const horaReq = horaAtual.getHours();
     const minutosReq = horaAtual.getMinutes();
     const segundosReq = horaAtual.getSeconds();
-
+    /* OCULTAR TOKEN */
     const b =
         "NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ";
     const c = "NzAxNTI0MTEwMw";

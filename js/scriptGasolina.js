@@ -36,6 +36,8 @@ function enviarNotificacaoTelegramGasolina() {
         "NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ";
     const c = "NzAxNTI0MTEwMw";
     const f = "LTEwMDIzNzUzMjY2MzE="; */
+
+    /* OCULTAR TOKEN */
     const botToken = atob("NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ");
     const chatId = atob("NzAxNTI0MTEwMw");
     const chatIdGroup = atob("LTEwMDIzNzUzMjY2MzE=");
