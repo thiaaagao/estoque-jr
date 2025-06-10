@@ -38,8 +38,12 @@
       </div>
       <div class="form-group">
         <label for="conectores">Conectores APC</label>
-        <input type="number" id="conectores" name="conectores" placeholder="Digite a quantidade em números" max="20"
-          min="0" />
+         <select name="conectores" id="conectores" required>
+          <option disabled selected></option>
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>
+          </select>
       </div>
       <div class="form-group">
         <label for="fitaIsolante">Fita Isolante</label>
@@ -53,12 +57,16 @@
       </div>
       <div class="form-group">
         <label for="dropFibra">Drop Fibra</label>
-        <input type="text" id="dropFibra" name="dropFibra" placeholder="Digite a quantidade em números" max="2000"
-          min="1000" pattern="^\d+(\.\d{1,2})?$" />
+        <select name="dropFibra" id="dropFibra" required>
+          <option disabled selected></option>
+          <option>1.000</option>
+          <option>2.000</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="fixaFio">Fixa Fio</label>
         <select name="fixaFio" id="fixaFio" required>
+          <option disabled selected></option>
           <option>0</option>
           <option>100</option>
         </select>
