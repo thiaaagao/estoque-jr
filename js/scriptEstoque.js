@@ -1,24 +1,8 @@
 document.getElementById("stockRequestForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const formData = new FormData(this);
-        let dataHoraElement =
-            document.getElementById("data");
-        let data = {};
-
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-        let dataValue = data["data"];
-        let dataObj = new Date(dataValue);
-
-        const isYearValidate = dataObj.getFullYear() === 2025
-
-        if(!isYearValidate){
-            showNotification("Ano inválido!")
-            return;
-        }
-
+       /*  const formData = new FormData(this); */
+       
         enviarNotificacaoTelegram();
         showNotification(
             "Requisição enviada com sucesso!",
@@ -36,6 +20,13 @@ function enviarNotificacaoTelegram() {
     const horaReq = horaAtual.getHours();
     const minutosReq = horaAtual.getMinutes();
     const segundosReq = horaAtual.getSeconds();
+
+    // Data requisição 
+    const diaReq = String(horaAtual.getDate()).padStart(2, '0'); // Dia do mês (1-31), formatado com 2 dígitos
+    const mesReq = String(horaAtual.getMonth() + 1).padStart(2, '0'); // Mês (0-11, então +1), formatado com 2 dígitos
+    const anoReq = horaAtual.getFullYear(); // Ano com 4 dígitos
+    const dataRequisicao = `${diaReq}/${mesReq}/${anoReq}`; // Formata como DD/MM/YYYY
+
     /* OCULTAR TOKEN */
     const b =
         "NzUyOTIyMDk0MjpBQUVHN1BOYmR3cU81aU9GZnpMWm1OMWZHMms3UURIVWpfRQ";
@@ -47,11 +38,6 @@ function enviarNotificacaoTelegram() {
     const nomeTecnico = document
         .getElementById("nomeTecnico")
         .value.toUpperCase();
-    const dataRequisicao = document
-        .getElementById("data")
-        .value.split("-")
-        .reverse()
-        .join("/");
     const esticadores =
         document.getElementById("esticadores").value;
     const dropFibra =
@@ -75,7 +61,7 @@ function enviarNotificacaoTelegram() {
     const etiquetaLacre =
         document.getElementById("etiquetaLacre").value;
     const placaJR = document.getElementById("placasJR").value;
-    const horasRequisicao = `${horaReq}:${minutosReq}:${segundosReq}`;
+    const horasRequisicao = `${String(horaReq).padStart(2, '0')}:${String(minutosReq).padStart(2, '0')}:${String(segundosReq).padStart(2, '0')}`;
     const message = `
       🚨 Nova Solicitação de Materiais de Estoque 🚨
 
