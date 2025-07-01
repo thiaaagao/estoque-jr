@@ -1,15 +1,6 @@
 document.getElementById("stockRequestForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // Validação de quantidades de buchas e parafusos
-        if (!validarBuchaParafuso()) {
-            showNotification(
-                "A quantidade de buchas e parafusos deve ser iguais.",
-                false
-            );
-            return;
-        }
-
         const formData = new FormData(this);
         let dataHoraElement =
             document.getElementById("data");
@@ -38,17 +29,6 @@ document.getElementById("stockRequestForm").addEventListener("submit", function 
             .reset();
     });
 
-function validarBuchaParafuso() {
-    const bucha6mm = parseInt(
-        document.getElementById("bucha6mm").value,
-        10
-    );
-    const parafuso6mm = parseInt(
-        document.getElementById("parafuso6mm").value,
-        10
-    );
-    return bucha6mm === parafuso6mm;
-}
 
 function enviarNotificacaoTelegram() {
     //Hora requisição
@@ -88,10 +68,10 @@ function enviarNotificacaoTelegram() {
         document.getElementById("abracadeira").value;
     const espiral =
         document.getElementById("espiral").value;
-    const bucha6mm =
-        document.getElementById("bucha6mm").value;
-    const parafuso6mm =
-        document.getElementById("parafuso6mm").value;
+    const buchaParafuso6mm =
+        document.getElementById("buchaParafuso").value;
+   /*  const parafuso6mm =
+        document.getElementById("parafuso6mm").value; */
     const etiquetaLacre =
         document.getElementById("etiquetaLacre").value;
     const placaJR = document.getElementById("placasJR").value;
@@ -114,8 +94,7 @@ function enviarNotificacaoTelegram() {
       🔹 Conectores APC: ${conectores} Unidades
       🔹 Abraçadeira: ${abracadeira} Unidades
       🔹 Espiral: ${espiral} Metros
-      🔹 Bucha 6mm: ${bucha6mm} Unidades
-      🔹 Parafuso 6mm: ${parafuso6mm} Unidades
+      🔹 Bucha & Parafuso: ${buchaParafuso6mm} Unidades
       🔹 Etiqueta Lacre: ${etiquetaLacre} Unidades
       --------------------------------------
 `;
