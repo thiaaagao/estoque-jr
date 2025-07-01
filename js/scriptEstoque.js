@@ -22,8 +22,8 @@ function enviarNotificacaoTelegram() {
     const segundosReq = horaAtual.getSeconds();
 
     // Data requisição 
-    const diaReq = String(horaAtual.getDate()).padStart(2, '0'); // Dia do mês (1-31), formatado com 2 dígitos
-    const mesReq = String(horaAtual.getMonth() + 1).padStart(2, '0'); // Mês (0-11, então +1), formatado com 2 dígitos
+    const diaReq = String(horaAtual.getDate()).padStart(2, '0'); // Dia do mês (1-31),
+    const mesReq = String(horaAtual.getMonth() + 1).padStart(2, '0'); // Mês (0-11, então +1)
     const anoReq = horaAtual.getFullYear(); // Ano com 4 dígitos
     const dataRequisicao = `${diaReq}/${mesReq}/${anoReq}`; // Formata como DD/MM/YYYY
 
@@ -96,6 +96,34 @@ function enviarNotificacaoTelegram() {
         .then((response) => response.json())
         .then((data) => {
             if (data.ok) {
+                // Pega a data e hora atual para o nome do arquivo de log
+                const agoraParaLog = new Date();
+                const diaLog = String(agoraParaLog.getDate()).padStart(2, '0');
+                const mesLog = String(agoraParaLog.getMonth() + 1).padStart(2, '0');
+                const anoLog = agoraParaLog.getFullYear();
+                const horaLog = String(agoraParaLog.getHours()).padStart(2, '0');
+                const minutosLog = String(agoraParaLog.getMinutes()).padStart(2, '0');
+                const segundosLog = String(agoraParaLog.getSeconds()).padStart(2, '0');
+
+                // Formata o nome do arquivo: REQUISICAO_AAAA-MM-DD_HHMMSS_NOMEDOTECNICO.txt
+                const nomeArquivo = `REQUISICAO_${anoLog}-${mesLog}-${diaLog}_${horaLog}${minutosLog}${segundosLog}_${nomeTecnico}.txt`;
+
+                const conteudoLog = message;
+
+                // Cria um Blob (objeto de arquivo) com o conteúdo e tipo de arquivo
+                const blob = new Blob([conteudoLog], { type: 'text/plain;charset=utf-8' });
+
+                const urlBlob = URL.createObjectURL(blob);
+
+                // Cria um link temporário na memória
+                const a = document.createElement('a');
+                a.href = urlBlob;
+                a.download = nomeArquivo; // Define o nome do arquivo para download
+                document.body.appendChild(a); // Adiciona o link ao corpo (precisa estar no DOM para ser clicável)
+                a.click(); // Simula um clique no link para iniciar o download
+                document.body.removeChild(a); // Remove o link após o download
+                URL.revokeObjectURL(urlBlob); // Libera o URL do Blob para liberar memória
+
             } else {
                 // console.error("Erro URL GRUPO:", data);
                 showNotification(
