@@ -164,14 +164,16 @@
         </div>
         <div class="form-group">
           <label for="placasJR">Placas JR</label>
-          <input
-            type="number"
-            id="placasJR"
+          <select
+            class="placasJR"
             name="placasJR"
-            placeholder="Digite a quantidade em números"
-            min="0"
-            max="20"
-          />
+            id="placasJR"
+            required
+          >
+            <option>0</option>
+            <option>10</option>
+            <option>20</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="espiral"
