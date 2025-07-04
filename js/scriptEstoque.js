@@ -56,6 +56,7 @@ function enviarNotificacaoTelegram() {
         document.getElementById("espiral").value;
     const buchaParafuso6mm =
         document.getElementById("buchaParafuso").value;
+    const buchaAcab = document.getElementById("buchaAcabamento").value;
    /*  const parafuso6mm =
         document.getElementById("parafuso6mm").value; */
     const etiquetaLacre =
@@ -81,6 +82,7 @@ function enviarNotificacaoTelegram() {
       🔹 Abraçadeira: ${abracadeira} Unidades
       🔹 Espiral: ${espiral} Metros
       🔹 Bucha & Parafuso: ${buchaParafuso6mm} Unidades
+      🔹 Bucha de Acabamento: ${buchaAcab} Unidades
       🔹 Etiqueta Lacre: ${etiquetaLacre} Unidades
       --------------------------------------
 `;
